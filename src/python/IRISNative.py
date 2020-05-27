@@ -13,23 +13,23 @@ dbnative = irisnative.createIris(connection)
 
 print("[1. Setting and getting a global]")
 # setting and getting a global
-# ObjectScript equivalent: set ^testglobal("1") = 8888
-dbnative.set(8888, "testglobal", "1")
+# ObjectScript equivalent: set ^python("1") = 8888
+dbnative.set(8888, "python", "1")
 
-# ObjectScript equivalent: set globalValue = $get(^testglobal("1"))
-globalValue = dbnative.get("testglobal","1")
+# ObjectScript equivalent: set globalValue = $get(^python("1"))
+globalValue = dbnative.get("python","1")
 
-print("The value of testglobal is ", globalValue)
+print("The value of python is ", globalValue)
 print()
 
 print("[2 Iterating over a global]")
 # modify global to iterate over
-# ObjectScript equivalent: set ^testglobal("1") = 8888
-# ObjectScript equivalent: set ^testglobal("2") = 9999
-dbnative.set(8888, "testglobal", "1")
-dbnative.set(9999, "testglobal", "2")
+# ObjectScript equivalent: set ^python("1") = 8888
+# ObjectScript equivalent: set ^python("2") = 9999
+dbnative.set(8888, "python", "1")
+dbnative.set(9999, "python", "2")
 
-Iter = dbnative.iterator("testglobal")
+Iter = dbnative.iterator("python")
 print("walk forwards")
 for subscript, value in Iter.items():
     print("subscript= {}, value={}".format(subscript, value))

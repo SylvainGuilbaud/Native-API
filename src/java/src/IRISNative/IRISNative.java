@@ -23,12 +23,12 @@ public class IRISNative {
             System.out.println("[1. Setting and getting a global]");
 
             // setting and getting a global
-            // ObjectScript equivalent: set ^testglobal("1") = 8888
-            iris.set(8888,"^testglobal","1");
-            // ObjectScript equivalent: set globalValue = $get(^testglobal("1"))
-            Integer globalValue = iris.getInteger("^testglobal","1");
+            // ObjectScript equivalent: set ^java("1") = 8888
+            iris.set(8888,"^java","1");
+            // ObjectScript equivalent: set globalValue = $get(^java("1"))
+            Integer globalValue = iris.getInteger("^java","1");
 
-            System.out.println("The value of ^testglobal(1) is " + globalValue);
+            System.out.println("The value of ^java(1) is " + globalValue);
             System.out.println();
 
 
@@ -36,13 +36,13 @@ public class IRISNative {
             System.out.println("[2. Iterating over a global]");
 
             // modify global to iterate over
-            // ObjectScript equivalent: set ^testglobal("1") = 8888
-            // ObjectScript equivalent: set ^testglobal("2") = 9999
-            iris.set(8888,"^testglobal","1");
-            iris.set(9999,"^testglobal","2");
+            // ObjectScript equivalent: set ^java("1") = 8888
+            // ObjectScript equivalent: set ^java("2") = 9999
+            iris.set(8888,"^java","1");
+            iris.set(9999,"^java","2");
 
             // iterate over all nodes forwards
-            IRISIterator subscriptIter = iris.getIRISIterator("^testglobal");
+            IRISIterator subscriptIter = iris.getIRISIterator("^java");
             System.out.println("walk forwards");
             while (subscriptIter.hasNext()) {
                 String subscript = subscriptIter.next();

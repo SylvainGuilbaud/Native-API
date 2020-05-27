@@ -16,21 +16,21 @@ const dbnative = connection.createIris();
 
 console.log('[1] Setting and getting a global');
 // setting and getting a global
-// ObjectScript equivalent: set ^testglobal("1") = 8888
-dbnative.set(8888, 'testglobal', '1');
+// ObjectScript equivalent: set ^nodejs("1") = 8888
+dbnative.set(8888, 'nodejs', '1');
 
-// ObjectScript equivalent: set globalValue = $get(^testglobal("1"))
-let globalValue = dbnative.get('testglobal','1');
-console.log('The value of testglobal is ' + globalValue);
+// ObjectScript equivalent: set globalValue = $get(^nodejs("1"))
+let globalValue = dbnative.get('nodejs','1');
+console.log('The value of nodejs is ' + globalValue);
 console.log();
 
 console.log('[2] Iterating over a global');
 // modify global to iterate over
-dbnative.set(7777, 'testglobal', '1');
-dbnative.set(8888, 'testglobal', '2');
-dbnative.set(9999, 'testglobal', '3');
+dbnative.set(7777, 'nodejs', '1');
+dbnative.set(8888, 'nodejs', '2');
+dbnative.set(9999, 'nodejs', '3');
 
-let subscriptIter = dbnative.iterator('testglobal');  
+let subscriptIter = dbnative.iterator('nodejs');  
 console.log('walk forwards');
 for ([key,value] of subscriptIter) {
     console.log('subscript='+ key +', value=' + value);
@@ -38,7 +38,7 @@ for ([key,value] of subscriptIter) {
 console.log();
 
 console.log('Iterate backwards a different way');
-let revIter = dbnative.iterator('testglobal').reversed();
+let revIter = dbnative.iterator('nodejs').reversed();
 let node = revIter.next();
 while (!node.done) {
     console.log('subscript='+ node.value[0] +', value='+ node.value[1]);

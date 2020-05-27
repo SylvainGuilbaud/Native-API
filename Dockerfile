@@ -14,7 +14,7 @@ WORKDIR /opt/irisapp
 RUN chown ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisapp
 
 COPY  --chown=irisowner irissession.sh /
-RUN chmod +x /irissession.sh 
+#RUN chmod +x /irissession.sh 
 
 ###########################################
 #### Install Java 8
@@ -78,14 +78,16 @@ USER irisowner
 
 COPY  --chown=irisowner Installer.cls .
 COPY  --chown=irisowner src src
+COPY  --chown=irisowner run.sh .
 
 # Configure this demo IRIS instance
 SHELL ["/irissession.sh"]
 
 # Set up anything you may need in Objectscript
 RUN \
+  write $system.Process.CurrentDirectory() \
   do $SYSTEM.OBJ.Load("Installer.cls", "ck") \
-  set sc = ##class(App.Installer).setup() 
+  set sc = ##class(App.Installer).setup()
 
 ENV PATH="/usr/irissys/bin/:${PATH}"
 

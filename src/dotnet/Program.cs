@@ -24,27 +24,27 @@ public class IRISNative
             Console.WriteLine("[1. Setting and getting a global]");
             
             // setting and getting a global
-            // ObjectScript equivalent: set ^testglobal("1") = 8888
-            iris.Set(8888, "^testglobal", "1");
+            // ObjectScript equivalent: set ^dotnet("1") = 8888
+            iris.Set(8888, "^dotnet", "1");
 
-            // ObjectScript equivalent: set globalValue = $get(^testglobal("1"))
-            Int16? globalValue = iris.GetInt16("^testglobal", "1");
+            // ObjectScript equivalent: set globalValue = $get(^dotnet("1"))
+            Int16? globalValue = iris.GetInt16("^dotnet", "1");
 
-            Console.WriteLine("The value of ^testglobal(1) is " + globalValue);
+            Console.WriteLine("The value of ^dotnet(1) is " + globalValue);
             Console.WriteLine();
 
             
             Console.WriteLine("[2. Iterating over a global]");
 
             // modify global to iterate over
-            // ObjectScript equivalent: set ^testglobal("1") = 8888
-            // ObjectScript equivalent: set ^testglobal("2") = 9999
-            iris.Set(8888, "^testglobal", "1");
-            iris.Set(9999, "^testglobal", "2");
+            // ObjectScript equivalent: set ^dotnet("1") = 8888
+            // ObjectScript equivalent: set ^dotnet("2") = 9999
+            iris.Set(8888, "^dotnet", "1");
+            iris.Set(9999, "^dotnet", "2");
 
             // iterate over all nodes forwards
             Console.WriteLine("walk forwards");
-            IRISIterator subscriptIter = iris.GetIRISIterator("^testglobal");
+            IRISIterator subscriptIter = iris.GetIRISIterator("^dotnet");
             foreach (var node in subscriptIter)
             {
                 Console.WriteLine("subscript=" + subscriptIter.CurrentSubscript + ", value=" + node);
